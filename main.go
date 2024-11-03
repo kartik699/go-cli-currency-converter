@@ -27,7 +27,7 @@ func main() {
         Title("Enter the amount").
         Prompt("-> ").
         Validate(func(s string) error {
-            amt, _ := strconv.ParseFloat(s, 64)
+            amt, _ := strconv.ParseFloat(s, 32)
             if amt == 0 {
                 return errors.New("amount should be greater than zero")
             } else if amt < 0 {
@@ -69,7 +69,7 @@ func main() {
         fmt.Printf("An error occurred - %s", err)
     }
 
-    amountInFloat, _ := strconv.ParseFloat(amount, 64)
+    amountInFloat, _ := strconv.ParseFloat(amount, 32)
 
     fmt.Printf("Your amount was %f in currency %s converted to currency %s\n", amountInFloat, optionToCurrency[currencyFrom], optionToCurrency[currencyTo])
 }
