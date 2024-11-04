@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 
+	// "github.com/charmbracelet/bubbles/spinner"
 	"github.com/charmbracelet/huh"
 )
 
@@ -27,7 +28,7 @@ func main() {
         Title("Enter the amount").
         Prompt("-> ").
         Validate(func(s string) error {
-            amt, _ := strconv.ParseFloat(s, 32)
+            amt, _ := convertToFloat(s)
             if amt == 0 {
                 return errors.New("amount should be greater than zero")
             } else if amt < 0 {
@@ -69,7 +70,13 @@ func main() {
         fmt.Printf("An error occurred - %s", err)
     }
 
-    amountInFloat, _ := strconv.ParseFloat(amount, 32)
+    amountInFloat, _ := convertToFloat(amount)
 
-    fmt.Printf("Your amount was %f in currency %s converted to currency %s\n", amountInFloat, optionToCurrency[currencyFrom], optionToCurrency[currencyTo])
+    GetCurrencyRate(optionToCurrency[currencyFrom], optionToCurrency[currencyTo], amountInFloat)
+}
+
+func convertToFloat(amount string) (float64, error) {
+    res, err := strconv.ParseFloat(amount, 32)
+
+    return res, err
 }
