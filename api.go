@@ -12,7 +12,6 @@ import (
 
 type CurrencyResponse struct {
 	Result 			 string  `json:"result"`
-	ConversionRate   float64 `json:"conversion_rate"`
 	ConversionResult float64 `json:"conversion_result"`
 }
 
@@ -50,8 +49,7 @@ func GetCurrencyRate(currencyFrom string, currencyTo string, amount float64) {
 	}
 
 	if currencyData.Result == "success" {
-        fmt.Printf("Conversion Rate: %.4f\n", currencyData.ConversionRate)
-        fmt.Printf("Converted Amount: %.4f %s\n", currencyData.ConversionResult, currencyTo)
+		fmt.Println("Converted Amount:", currencyData.ConversionResult, currencyTo)
     } else {
         log.Println("Failed to get a successful response from the API.")
     }

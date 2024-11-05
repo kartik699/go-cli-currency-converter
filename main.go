@@ -3,10 +3,11 @@ package main
 import (
 	"errors"
 	"fmt"
+	"log"
 	"strconv"
 
-	// "github.com/charmbracelet/bubbles/spinner"
 	"github.com/charmbracelet/huh"
+	"github.com/charmbracelet/huh/spinner"
 )
 
 var (
@@ -72,11 +73,25 @@ func main() {
 
     amountInFloat, _ := convertToFloat(amount)
 
-    GetCurrencyRate(optionToCurrency[currencyFrom], optionToCurrency[currencyTo], amountInFloat)
+    title := fmt.Sprintf("Converting to %s...", optionToCurrency[currencyTo])
+
+    err = spinner.New().Title(title).
+    Action(func() {
+        GetCurrencyRate(optionToCurrency[currencyFrom], optionToCurrency[currencyTo], amountInFloat)
+    }).
+    Run()
+
+    if err != nil {
+        log.Fatal("Something went wrong!")
+    }
 }
 
 func convertToFloat(amount string) (float64, error) {
     res, err := strconv.ParseFloat(amount, 32)
 
-    return res, err
+    if err != nil {
+        return 0, err
+    }
+
+    return res, nil
 }
