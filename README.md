@@ -19,7 +19,10 @@ I used https://app.exchangerate-api.com/ for converting the currency.
 Currently, this project supports conversion between 4 currencies: USD, EUR, JPY and INR.
 
 ## Setting up the project in your local environment
-1. Clone this repository on your machine: `git clone https://github.com/kartik699/go-cli-currency-converter.git`
+1. Clone this repository on your machine
+```
+git clone https://github.com/kartik699/go-cli-currency-converter.git
+```
 2. Create an account on the website mentioned in 'API used' section to get your API key
 3. Create an env file named `.env.local` and copy paste your API key in this file
 ```
