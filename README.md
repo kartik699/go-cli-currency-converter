@@ -1,5 +1,10 @@
 # CLI Currency Converter in Golang
-A Command Line tool for converting amount from one currency to another. It features a Terminal User Interface (TUI) for seamless user experience.
+A Command Line tool for converting amount from one currency to another. It features a Terminal User Interface (TUI) for smooth user experience.
+
+# Preview
+
+https://github.com/user-attachments/assets/e3e23ac7-cae8-4f1d-b4ee-3b79f3efbb66
+
 
 ## Packages Used
 - net/http for http requests to the currency exchange api
